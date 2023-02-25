@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leaflet Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+
+  </head>
+  <body>
+    <div id="dates">
+      <form id ="myForm", action=""leaf> 
+      <input type="text" name="datetimes" />
+      <input type="submit" value="Submit">
+      </form>
+      <script>
+              $(function() {
+                // Initialize the date range picker widget
+                $('input[name="datetimes"]').daterangepicker({
+                  timePicker: true,
+                  startDate: moment.utc().startOf('day'),
+                  
+                  endDate: moment.utc().startOf('day'),
+                  locale: {
+                    format: 'M/DD hh:mm A'
+                  }
+                });
+
+                // Add an event handler to the form submission event
+                $('#myForm').on('submit', function(event) {
+                  // Prevent the default form submission behavior
+                  event.preventDefault();
+
+                  // Get the selected start and end dates from the date range picker widget
+                  var selectedStartDate = $('input[name="datetimes"]').data('daterangepicker').startDate.toISOString();
+                  var selectedEndDate = $('input[name="datetimes"]').data('daterangepicker').endDate.toISOString();
+                  window.S_Date = selectedStartDate;
+                  window.E_Date = selectedEndDate;
+                  // Do something with the selected start and end dates
+                  //console.log('Selected start date:', selectedStartDate);
+                  //console.log('Selected end date:', selectedEndDate);
+                  
+                  // Submit the form using AJAX or perform any other necessary action
+                });
+              });
+      </script>
+      
+    </div>
+    <div id="mapid" style="height: 600px;">
+      <script src="Map.js">
+      </script>
+      </div>
+
+  </body>
+</html>
