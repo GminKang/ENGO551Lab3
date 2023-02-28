@@ -2,14 +2,14 @@ var map = L.map('mapid').setView([51.0447, -114.0719], 13);
 
 function onEachFeature(feature, layer) {
   // does this feature have a property named popupContent?
-  
+
       var popupContent = "<p><b>Isued Date (in UTC format):</b> " + feature.properties.issueddate + "</p>" +
-      "<p><b>workclassgroup:</b> " + feature.properties.workclassgroup + "</p>" +"</p>"+"<p><b>Contractoer Name:</b> " 
-      + feature.properties.contractorname + "<p><b>Community Name :</b> " +feature.properties.communityname + "</p>" + "<p><b>Original Address:</b> " 
+      "<p><b>work class group:</b> " + feature.properties.workclassgroup + "</p>" +"</p>"+"<p><b>Contractor Name:</b> " 
+      + feature.properties.contractorname + "<p><b>Community Name :</b> " +feature.properties.communityname + "</p>" + "<p><b>Original Address:</b> "
       + feature.properties.originaladdress;
 
       layer.bindPopup(popupContent);
-  
+
 }
 
 
@@ -40,11 +40,11 @@ form.addEventListener('submit',event=> {
   }).addTo(map);
   const startdate = window.S_Date.slice(0,-1);
   const enddate = window.E_Date.slice(0,-1);
-  
+
 
   fetch(`https://data.calgary.ca/resource/c2es-76ed.geojson?$where=issueddate > \'${startdate}\' and issueddate< \'${enddate}\'`)
   .then(response =>
-    
+
     response.json()).then(data => {
     // Use the GeoJSON data here
           var temp = L.geoJSON(data,{
@@ -52,11 +52,8 @@ form.addEventListener('submit',event=> {
             onEachFeature: onEachFeature
            }).addTo(map);
     });
-    
+
   console.log('I get it: '+ startdate);
   console.log('I get:', enddate);
 
 })
-
-
-  
