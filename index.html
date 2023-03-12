@@ -5,7 +5,7 @@
     <title>Leaflet Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
-
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
@@ -23,7 +23,7 @@
   </head>
   <body>
     <div id="dates">
-      <form id ="myForm", action=""leaf>
+      <form id ="myForm", action=""leaf> 
       <input type="text" name="datetimes" />
       <input type="submit" value="Submit">
       </form>
@@ -33,7 +33,7 @@
                 $('input[name="datetimes"]').daterangepicker({
                   timePicker: true,
                   startDate: moment.utc().startOf('day'),
-
+                  
                   endDate: moment.utc().startOf('day'),
                   locale: {
                     format: 'M/DD hh:mm A'
@@ -53,12 +53,12 @@
                   // Do something with the selected start and end dates
                   //console.log('Selected start date:', selectedStartDate);
                   //console.log('Selected end date:', selectedEndDate);
-
+                  
                   // Submit the form using AJAX or perform any other necessary action
                 });
               });
       </script>
-
+      
     </div>
     <div id="mapid" style="height: 600px;">
       <script src="Map.js">
